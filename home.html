@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Welcome, {{ session.user }}!</h2>
+<h2>Welcome, {{ session.username }}!</h2>
 
-<form method="GET">
+<form method="GET" class="search-sort">
     <input type="text" name="search" placeholder="Search products..." value="{{ search }}">
     <select name="sort">
         <option value="">Sort by</option>
@@ -15,10 +15,10 @@
 </form>
 
 <h3>Add Product</h3>
-<form method="POST">
+<form method="POST" class="add-form">
     <input type="text" name="name" placeholder="Product Name" required>
     <input type="number" name="price" placeholder="Price" required>
-    <button type="submit">Add</button>
+    <button type="submit">Add Product</button>
 </form>
 
 <div class="product-list">
