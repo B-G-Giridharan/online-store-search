@@ -1,15 +1,174 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="form-box">
-    <h2>Login</h2>
-    <form method="POST">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-        {% if error %}
-        <p class="error">{{ error }}</p>
-        {% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🛍️ Online Store Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+    }
+    nav {
+      background: #007bff;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+    }
+    .container {
+      padding: 20px;
+    }
+    .form-box {
+      width: 320px;
+      margin: 60px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    .form-box input {
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-box button {
+      width: 100%;
+      background: #007bff;
+      color: white;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-box button:hover {
+      background: #0056b3;
+    }
+    .error {
+      color: red;
+      text-align: center;
+    }
+    .logout-btn {
+      background: #ff4b5c;
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .logout-btn:hover {
+      background: #e63a4a;
+    }
+    .search-sort {
+      margin-bottom: 20px;
+    }
+    .search-sort input,
+    .search-sort select,
+    .search-sort button {
+      padding: 8px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .product-card {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 0 5px #ccc;
+    }
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .product-card h4 {
+      margin: 10px 0 5px;
+    }
+    .product-card p {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h2>🛍️ Online Store</h2>
+    <div>
+      <a href="#login">Login</a>
+      <a href="#register">Register</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Welcome to Online Store Search</h2>
+    <form class="search-sort">
+      <input type="text" placeholder="Search products..." />
+      <select>
+        <option value="">Sort by</option>
+        <option value="low-high">Price: Low to High</option>
+        <option value="high-low">Price: High to Low</option>
+        <option value="name-asc">Name: A–Z</option>
+        <option value="name-desc">Name: Z–A</option>
+      </select>
+      <button type="button">Apply</button>
     </form>
-    <p>Don’t have an account? <a href="{{ url_for('register') }}">Register</a></p>
-</div>
-{% endblock %}
+
+    <h3>Add Product</h3>
+    <form class="add-form">
+      <input type="text" placeholder="Product Name" required />
+      <input type="number" placeholder="Price" required />
+      <button type="button">Add Product</button>
+    </form>
+
+    <div class="product-list">
+      <div class="product-card">
+        <img src="https://via.placeholder.com/200" alt="Product" />
+        <h4>Smartphone</h4>
+        <p>₹699</p>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/200" alt="Product" />
+        <h4>Headphones</h4>
+        <p>₹199</p>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/200" alt="Product" />
+        <h4>Smartwatch</h4>
+        <p>₹249</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mock Login Page -->
+  <div id="login" class="form-box">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username" />
+    <input type="password" placeholder="Password" />
+    <button>Login</button>
+    <p>Don’t have an account? <a href="#register">Register</a></p>
+  </div>
+
+  <!-- Mock Register Page -->
+  <div id="register" class="form-box">
+    <h2>Register</h2>
+    <input type="text" placeholder="Username" />
+    <input type="password" placeholder="Password" />
+    <button>Register</button>
+    <p>Already have an account? <a href="#login">Login</a></p>
+  </div>
+</body>
+</html>
